@@ -1,0 +1,21 @@
+
+name: PullRequest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version-file: "./go.mod"
+          cache: true
+      - run: |
+        go test ./... --json > output.json
+        go run ./output.json
+        cat output.json.md > $GITHUB_STEP_SUMMARY
