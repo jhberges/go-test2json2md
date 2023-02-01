@@ -43,27 +43,34 @@ type TestEventAggregator struct {
 	Failures   int32
 	Skips      int32
 	Passes     int32
+	Runs       int32
 }
 
 func (t *TestEventAggregator) Add(te *TestEvent) {
 	t.TestEvents = append(t.TestEvents, te)
+	isTest := len(te.Test) > 0
 	ts, ok := t.TestMap[fmt.Sprintf("%s.%s", te.Package, te.Test)]
 	if !ok {
+		if isTest {
+			t.Runs++
+		}
 		ts = &TestSummary{Package: te.Package, Test: te.Test, Events: make([]*TestEvent, 0), OutputLines: make([]string, 0), BenchmarkLines: make([]string, 0)}
 		if t.TestMap == nil {
 			t.TestMap = make(map[string]*TestSummary)
 		}
 		t.TestMap[fmt.Sprintf("%s.%s", te.Package, te.Test)] = ts
 	}
-	ts.Add(te)
-	switch te.Action {
-	case TestEventAction_fail:
-		t.Failures++
-	case TestEventAction_skip:
-		t.Skips++
-	case TestEventAction_pass:
-		t.Passes++
+	if isTest {
+		switch te.Action {
+		case TestEventAction_fail:
+			t.Failures++
+		case TestEventAction_skip:
+			t.Skips++
+		case TestEventAction_pass:
+			t.Passes++
+		}
 	}
+	ts.Add(te)
 }
 
 func (t *TestSummary) Add(te *TestEvent) {

@@ -1,7 +1,6 @@
-# Test report, ass
+# Test report
 
-{{ len .TestMap }}
-{{ .Passes }} passes, {{ .Failures }} fails, {{ .Skips }} skips.
+Of {{ .Runs }} tests run there were {{ .Passes }} passes, {{ .Failures }} fails, {{ .Skips }} skips.
 
 {{ range $key, $val := .TestMap }}
 {{ if not $val.Test }}
