@@ -16,6 +16,6 @@ jobs:
           go-version-file: "./go.mod"
           cache: true
       - run: |
-        go test ./... --json > output.json
-        go run ./output.json
-        cat output.json.md > $GITHUB_STEP_SUMMARY
+          go test ./... --json > output.json
+          go run ./output.json
+          cat output.json.md > $GITHUB_STEP_SUMMARY
