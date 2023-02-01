@@ -1,0 +1,37 @@
+# Test report, ass
+
+{{ len .TestMap }}
+{{ .Passes }} passes, {{ .Failures }} fails, {{ .Skips }} skips.
+
+{{ range $key, $val := .TestMap }}
+{{ if not $val.Test }}
+# PACKAGE {{ $val.Package }}
+
+```text
+{{ range $val.OutputLines }}{{ . }}{{ end }}```
+
+{{ else }}
+## TEST {{ $val.Package }}.{{ $val.Test }}
+
+{{ if $val.Failed }} 
+FAILED :fire:
+{{ else }}{{ if $val.Skipped }}
+SKIPPED :fast_forward:
+{{ else }}
+PASSED :heavy_check_mark:
+{{ end }}
+{{end}}
+
+| event | time | 
+|-------|------|
+{{ range $val.Events }}| {{ .Action }} | {{ .Time }} |
+{{ end }}
+
+```text
+{{ range $val.OutputLines }}{{ . }}{{ end }}```
+
+```text
+{{ range $val.BenchmarkLines }}{{ . }}{{ end }}```
+{{ end }}
+{{ end }}
+

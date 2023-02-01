@@ -1,0 +1,11 @@
+{"Time":"2023-02-01T11:11:03.736947226+01:00","Action":"output","Package":"github.com/jhberges/go-test2json2md/v2/cmd","Output":"?   \tgithub.com/jhberges/go-test2json2md/v2/cmd\t[no test files]\n"}
+{"Time":"2023-02-01T11:11:03.737046752+01:00","Action":"skip","Package":"github.com/jhberges/go-test2json2md/v2/cmd","Elapsed":0}
+{"Time":"2023-02-01T11:11:03.747763508+01:00","Action":"run","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Test":"Test_TestSummary_Add_Output"}
+{"Time":"2023-02-01T11:11:03.747803054+01:00","Action":"output","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Test":"Test_TestSummary_Add_Output","Output":"=== RUN   Test_TestSummary_Add_Output\n"}
+{"Time":"2023-02-01T11:11:03.747818852+01:00","Action":"output","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Test":"Test_TestSummary_Add_Output","Output":"--- PASS: Test_TestSummary_Add_Output (0.00s)\n"}
+{"Time":"2023-02-01T11:11:03.747833723+01:00","Action":"pass","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Test":"Test_TestSummary_Add_Output","Elapsed":0}
+{"Time":"2023-02-01T11:11:03.747843705+01:00","Action":"output","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Output":"PASS\n"}
+{"Time":"2023-02-01T11:11:03.747851402+01:00","Action":"output","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Output":"ok  \tgithub.com/jhberges/go-test2json2md/v2/internal/aggregator\t(cached)\n"}
+{"Time":"2023-02-01T11:11:03.747859939+01:00","Action":"pass","Package":"github.com/jhberges/go-test2json2md/v2/internal/aggregator","Elapsed":0}
+{"Time":"2023-02-01T11:11:03.748008446+01:00","Action":"output","Package":"github.com/jhberges/go-test2json2md/v2/internal/renderer","Output":"?   \tgithub.com/jhberges/go-test2json2md/v2/internal/renderer\t[no test files]\n"}
+{"Time":"2023-02-01T11:11:03.748028054+01:00","Action":"skip","Package":"github.com/jhberges/go-test2json2md/v2/internal/renderer","Elapsed":0}
