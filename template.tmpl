@@ -26,11 +26,17 @@ PASSED :heavy_check_mark:
 {{ range $val.Events }}| {{ .Action }} | {{ .Time }} |
 {{ end }}
 
+<details>
+  <summary>Console output</summary>
+
+### Console
 ```text
 {{ range $val.OutputLines }}{{ . }}{{ end }}```
 
+### Benchmark
 ```text
 {{ range $val.BenchmarkLines }}{{ . }}{{ end }}```
+</details>
 {{ end }}
 {{ end }}
 
