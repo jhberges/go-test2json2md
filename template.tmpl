@@ -6,9 +6,11 @@ Of {{ .Runs }} tests run there were {{ .Passes }} passes, {{ .Failures }} fails,
 {{ if not $val.Test }}
 # PACKAGE {{ $val.Package }}
 
+<details>
+  <summary>Console output</summary>
 ```text
 {{ range $val.OutputLines }}{{ . }}{{ end }}```
-
+</details>
 {{ else }}
 ## TEST {{ $val.Package }}.{{ $val.Test }}
 
@@ -26,17 +28,22 @@ PASSED :heavy_check_mark:
 {{ range $val.Events }}| {{ .Action }} | {{ .Time }} |
 {{ end }}
 
+{{ if $val.OutputLines or $val.BenchmarkLines }}
 <details>
   <summary>Console output</summary>
 
+{{ if $val.OutputLines }}
 ### Console
 ```text
 {{ range $val.OutputLines }}{{ . }}{{ end }}```
-
+{{ end }}
+{{ if $val.BenchmarkLines }}
 ### Benchmark
 ```text
 {{ range $val.BenchmarkLines }}{{ . }}{{ end }}```
+{{ end }}
 </details>
+{{ end }}
 {{ end }}
 {{ end }}
 
