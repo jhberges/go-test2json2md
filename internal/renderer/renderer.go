@@ -2,6 +2,7 @@ package renderer
 
 import (
 	"bufio"
+	_ "embed"
 	"fmt"
 	"os"
 	"path"
@@ -10,9 +11,14 @@ import (
 	"github.com/jhberges/go-test2json2md/v2/internal/aggregator"
 )
 
+var (
+	// NB No space between comments and "go:..." below!
+	//go:embed template.tmpl
+	report_template string
+)
+
 func To(out, tmpl string, agg *aggregator.TestEventAggregator) error {
-	fmt.Printf("Using template %s to write %s\n", tmpl, out)
-	t, err := template.New(path.Base(tmpl)).ParseFiles(tmpl)
+	t, err := template.New(path.Base(tmpl)).Parse(report_template)
 	if err != nil {
 		fmt.Printf("No parsy\n")
 		return err
