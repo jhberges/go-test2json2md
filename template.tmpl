@@ -8,8 +8,10 @@ Of {{ .Runs }} tests run there were {{ .Passes }} passes, {{ .Failures }} fails,
 
 <details>
   <summary>Console output</summary>
+
 ```text
 {{ range $val.OutputLines }}{{ . }}{{ end }}```
+
 </details>
 {{ else }}
 ## TEST {{ $val.Package }}.{{ $val.Test }}
@@ -28,7 +30,7 @@ PASSED :heavy_check_mark:
 {{ range $val.Events }}| {{ .Action }} | {{ .Time }} |
 {{ end }}
 
-{{ if $val.OutputLines or $val.BenchmarkLines }}
+{{ if or (gt (len $val.OutputLines) 0) (gt (len $val.BenchmarkLines) 0) }}
 <details>
   <summary>Console output</summary>
 
