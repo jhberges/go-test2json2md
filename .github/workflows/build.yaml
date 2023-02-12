@@ -21,4 +21,11 @@ jobs:
       - run: |
           go test ./... --json > output.json
           go run cmd/main.go ./output.json
-          cat output.json.md > $GITHUB_STEP_SUMMARY
+          if [ ! $(wc -l output.json.md) gt 0 ]
+          then
+            echo "Output MD was zero size?"
+            cat output.json.md
+            exit 1
+          else
+            cat output.json.md > $GITHUB_STEP_SUMMARY
+          fi
