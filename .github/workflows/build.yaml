@@ -8,16 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version-file: "./go.mod"
+          cache: true
       - uses: goreleaser/goreleaser-action@v4
         with:
           distribution: goreleaser
           version: latest
           install-only: true
       - run: gorelease check
-      - uses: actions/setup-go@v3
-        with:
-          go-version-file: "./go.mod"
-          cache: true
       - run: |
           go test ./... --json > output.json
           go run cmd/main.go ./output.json
