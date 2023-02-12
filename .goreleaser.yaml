@@ -9,6 +9,8 @@ before:
 builds:
   - env:
       - CGO_ENABLED=0
+    main: ./cmd/main.go
+    binary: gotest2json2md
     goos:
       - linux
       - windows
