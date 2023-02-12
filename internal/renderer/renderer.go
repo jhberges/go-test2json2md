@@ -20,12 +20,12 @@ var (
 func To(out, tmpl string, agg *aggregator.TestEventAggregator) error {
 	t, err := template.New(path.Base(tmpl)).Parse(report_template)
 	if err != nil {
-		fmt.Printf("No parsy\n")
+		fmt.Printf("Cound not parse template from string: %s\nTemplate:\n%s\n", err.Error(), tmpl)
 		return err
 	}
 	f, err := os.Create(out)
 	if err != nil {
-		fmt.Printf("No creaty\n")
+		fmt.Printf("Cound not create template from string: %s\nTemplate:\n%s\n", err.Error(), tmpl)
 		return err
 	}
 	wr := bufio.NewWriter(f)
