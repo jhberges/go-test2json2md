@@ -1,11 +1,11 @@
-name: build-release
+name: build-snapshot-release
 
 on:
   push:
     branches: [main]
 
 jobs:
-  do-release:
+  do-snapshot-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
