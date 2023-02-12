@@ -1,16 +1,19 @@
 name: build-and-test
 
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: goreleaser/goreleaser-action@v4
+        with:
+          distribution: goreleaser
+          version: latest
+          install-only: true
+      - run: gorelease check
       - uses: actions/setup-go@v3
         with:
           go-version-file: "./go.mod"
