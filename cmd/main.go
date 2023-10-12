@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/jhberges/go-test2json2md/v2/internal/aggregator"
@@ -12,6 +12,9 @@ import (
 )
 
 func main() {
+	flag.Usage = func() {
+		fmt.Printf("Usage: gotest2jsonmd [source-test2json] <output.md>")
+	}
 	flag.Parse()
 
 	source := flag.Arg(0)
@@ -20,7 +23,7 @@ func main() {
 		if len(destination) == 0 {
 			destination = source + ".md"
 		}
-		bytes, err := ioutil.ReadFile(source)
+		bytes, err := os.ReadFile(source)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
